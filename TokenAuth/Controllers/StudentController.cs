@@ -11,7 +11,11 @@ namespace AngularWebsite.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            return View();
+            var accessToken = Session["accessToken"];
+            if (accessToken!=null)
+                return View();
+            else
+                return RedirectToAction("Login", "Account");
         }
     }
 }

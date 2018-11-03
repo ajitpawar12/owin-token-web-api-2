@@ -233,10 +233,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountAPIController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentAPIController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DBContext\FetchStudent.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>
@@ -318,6 +316,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\ng-table.min.css.map" />
+    <Content Include="Content\ng-table.css.map" />
     <EntityDeploy Include="DBContext\SchoolDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SchoolDB.Designer.cs</LastGenOutput>
@@ -325,8 +325,6 @@
     <Content Include="DBContext\SchoolDB.edmx.diagram">
       <DependentUpon>SchoolDB.edmx</DependentUpon>
     </Content>
-    <Content Include="Content\ng-table.min.css.map" />
-    <Content Include="Content\ng-table.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -347,7 +345,6 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />

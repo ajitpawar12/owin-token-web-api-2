@@ -11,7 +11,7 @@
             <input class="form-control" ng-model="txtusername" type="text" placeholder="User id"/>
         </div>
         <div class="col-md-12" style="margin-top:10px;">
-            <input class="form-control"ng-model="txtpassword" type="text" placeholder="Password" />
+            <input class="form-control"ng-model="txtpassword" type="password" placeholder="Password" />
 
         </div>
         <div class="col-md-12" style="margin-top:10px;">
@@ -20,7 +20,7 @@
         </div>
         <div class="col-md-12" style="margin-top:10px;">
             <input class="btn btn-md btn-primary" ng-model="btnloin" type="button" value="Login" ng-click="checkLogin()" />
-            <input class="btn btn-md btn-primary" ng-model="btncancel" type="button" value="Cancel" />
+            <input class="btn btn-md btn-primary" ng-model="btncancel" type="button" value="Cancel" ng-click="clearvalues()"/>
 
         </div>
    
@@ -39,26 +39,27 @@
 
                 var response = $scope.GetToken();
 
-                response.then(function (resp) {
-                    //$log.log("GetToken promise response status= " + resp.status)
-                    $scope.userName = resp.data.userName;
-                    //Store the token information in the SessionStorage
-                    //So that it can be accessed for other views
+                response.then(function (resp)
+                {
+                    $scope.userName = resp.data.userName;                    
                     sessionStorage.setItem('userName', resp.data.userName);
                     sessionStorage.setItem('accessToken', resp.data.access_token);
-                    $scope.AccessToken = resp.data.access_token;
-                    //sessionStorage.setItem('refreshToken', resp.data.refresh_token);
-                    // window.location.href = '/Employee/Index';
+                    $scope.AccessToken = resp.data.access_token;                    
                     alert("You are Now Authorise");
-
                     window.location.href = '/Student/Index';
                 }, function (err) {
                     $scope.responseData = "Error " + err.status;
+                   
+                    alert("Invalid Login")
                 });
             };
 
-
-
+            $scope.clearvalues=function()
+            {
+                $scope.txtusername = '';
+                $scope.txtpassword = '';
+                $scope.txtgranttype = '';
+            }
             $scope.GetToken = function () {
                 
                 var resp = $http({
