@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/bootstrap-datepicker.min.css" rel="stylesheet" />
+<script src="~/app/Controllers/StudentController.js"></script>
+<div class="row"  ng-controller="studentController">
+    <div class="container">
+        <h2></h2>
+        <div class="col-lg-2">
+            <input id="addstudent" type="button" class="btn btn-info btn-sm" value="Add" ng-click="clkaddstudent()"/>
+        </div>
+        <div class="col-lg-2">
+            <input id="LoadStudent" type="button" class="btn btn-info btn-sm" value="Load Student" ng-click="LoadAllStudentData()" />
+        </div>
+        @*<div class="col-lg-2">
+            <input id="GetAuthentication" type="button" class="btn btn-info btn-sm" value="Get Authenticate" ng-click="GetAuthentication()" />
+        </div>*@
+        <br/>
+        <div class="col-lg-12" style="margin-top:40px;">           
+            <table ng-table="tableParams" class="table" show-filter="true">
+                <tr ng-repeat="user in $data">
+                    <td title="'FirstName'" filter="{ FirstName: 'text'}" sortable="'FirstName'">
+                        {{user.FirstName}}
+                    </td>
+                    <td title="'LastName'" filter="{ LastName: 'text'}" sortable="'LastName'">
+                        {{user.LastName}}
+                    </td>
+                    <td title="'BirthDate'" filter="{ BirthDate: 'text'}" sortable="'BirthDate'">
+                        {{user.BirthDate | date}}
+                    </td>
+                    <td title="'City'" filter="{ City: 'text'}" sortable="'City'">
+                        {{user.City}}
+                    </td>
+                    <td title="'Email'" filter="{ Email: 'text'}" sortable="'Email'">
+                        {{user.Email}}
+                    </td>
+                    <td title="'Phone'" filter="{ Phone: 'text'}" sortable="'Phone'">
+                        {{user.Phone}}
+                    </td>
+                    <td title="Edit">
+                        <input type="button" class="btn btn-primary btn-sm" value="Edit" ng-click="clkstudentedit(user.StudentId)"/>
+                    </td>
+                    <td title="Delete">
+                        <input type="button" class="btn btn-danger btn-sm" value="Delete" ng-click="clkstudentdelete(user.StudentId)" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal fade" id="myModal"  role="dialog" ng-show="true">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">{{OpName}} Student</h4>
+                    </div>
+                    <div class="modal-body">  
+                            <div class="col-md-12">
+                                <label> First Name</label>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" id="txtFirstName"/>
+                            </div>                        
+                        
+                            <div class="col-md-12">
+                                <label> Last Name</label>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" id="txtLastName" />
+                            </div>
+                        <div class="col-md-12">
+                            <label> Birth Date</label>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" id="txtBirthDate" />
+                        </div>
+
+                        <div class="col-md-12">
+                            <label> City</label>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" id="txtCity" />
+                        </div>  
+                        
+                        <div class="col-md-12">
+                            <label> Email</label>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" id="txtEmail" />
+                        </div>  
+                        <div class="col-md-12">
+                            <label> Phone</label>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" id="txtPhone" />
+                        </div>
+                        <div class="col-md-12">
+                            <label> Password</label>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="password" class="form-control" id="txtPassword" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" id="hdnStudentId" />
+                        <button id="btnSubmit" type="button" class="btn btn-default" data-dismiss="modal" ng-click="AddUpdateStudent()">Submit</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal fade" id="myLoginModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Login Student</h4>
+                    </div>
+                    <div class="modal-body">
+                         <div class="col-md-12">
+                            <label> User Name</label>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" id="txtloginUsername" />
+                        </div>
+                        <div class="col-md-12">
+                            <label> Password</label>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="password" class="form-control" id="txtloginPassword" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" id="hdnStudentId" />
+                        <button id="btnSubmit" type="button" class="btn btn-default" data-dismiss="modal" ng-click="CheckLogin()">Submit</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+<script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script>
+        $(function () {
+            $('#txtBirthDate').datepicker({
+                uiLibrary: 'bootstrap'
+            });
+
+        });
+    </script>
+    }
