@@ -46,7 +46,15 @@
                     sessionStorage.setItem('accessToken', resp.data.access_token);
                     $scope.AccessToken = resp.data.access_token;                    
                     alert("You are Now Authorise");
-                    window.location.href = '/Student/Index';
+                    var cktoken=sessionStorage.getItem('accessToken', resp.data.access_token);
+                    if (cktoken != null)
+                    {
+                        window.location.href = '/Student/Index';
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }, function (err) {
                     $scope.responseData = "Error " + err.status;
                    
