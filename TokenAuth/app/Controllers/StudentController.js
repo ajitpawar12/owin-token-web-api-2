@@ -5,6 +5,7 @@ app.controller('studentController', ['$scope', '$log', '$http', 'NgTableParams',
     $scope.AccessToken = sessionStorage.getItem("accessToken");    
     $scope.OpName = "Add";
 
+    
     //====Check access token is present or not
     $scope.CheckAccessToken = function ()
     {
@@ -16,8 +17,7 @@ app.controller('studentController', ['$scope', '$log', '$http', 'NgTableParams',
             return false;
         }
         return true;
-    }
-
+    }    
     //=============Load All Students Function============//
     $scope.LoadAllStudentData = function ()
     {

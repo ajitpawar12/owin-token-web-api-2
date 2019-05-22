@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SchoolDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SchoolDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="FetchStudent">
           <Key>
             <PropertyRef Name="FetchStudentId" />
@@ -58,8 +58,7 @@
           <EntitySet Name="FetchStudent" EntityType="Self.FetchStudent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SchoolDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -91,11 +90,11 @@
           <EntitySet Name="FetchStudents" EntityType="Self.FetchStudent" />
           <EntitySet Name="Students" EntityType="Self.Student" />
           <FunctionImport Name="Sp_DeleteStudent">
-            <Parameter Name="SId" Mode="In" Type="Int32" />
+          <Parameter Name="SId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_GetAllStudents" ReturnType="Collection(SchoolDBModel.Sp_GetAllStudents_Result)" />
           <FunctionImport Name="Sp_GetStudentDetailsById" ReturnType="Collection(SchoolDBModel.Sp_GetStudentDetailsById_Result)">
-            <Parameter Name="SId" Mode="In" Type="Int32" />
+          <Parameter Name="SId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_InsertStudent">
             <Parameter Name="FName" Mode="In" Type="String" />

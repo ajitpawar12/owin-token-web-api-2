@@ -10,12 +10,8 @@ namespace AngularWebsite.Controllers
     {
         // GET: Student
         public ActionResult Index()
-        {
-            var accessToken = Session["accessToken"];
-            if (accessToken!=null)
-                return View();
-            else
-                return RedirectToAction("Login", "Account");
+        {            
+            return View();
         }
     }
 }
